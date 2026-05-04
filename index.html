@@ -136,28 +136,23 @@ let fase = 0;
 const perguntas = [
 {
 p: "O que você prefere fazer no tempo livre?",
-r: ["Assistir algo 📺", "Conversar 💬", "Dormir 😴"],
-c: 1
+r: ["Assistir algo 📺", "Conversar 💬", "Dormir 😴"]
 },
 {
 p: "Qual dessas coisas deixa o dia melhor?",
-r: ["Comida boa 🍔", "Mensagem de alguém especial 💖", "Nada 😅"],
-c: 1
+r: ["Comida boa 🍔", "Mensagem de alguém especial 💖", "Descansar 😌"]
 },
 {
 p: "Quando o celular vibra, você pensa:",
-r: ["Tanto faz", "Espero que seja alguém importante 👀", "Nem vejo"],
-c: 1
+r: ["Quem será? 🤔", "Tomara que seja alguém legal 👀", "Vou ver depois 😅"]
 },
 {
 p: "Qual dessas combina mais com um dia feliz?",
-r: ["Silêncio", "Boa companhia 😊", "Tédio"],
-c: 1
+r: ["Boa companhia 😊", "Momentos tranquilos 😌", "Risadas 😂"]
 },
 {
 p: "Última perguntinha...",
-r: ["Continuar 😳", "Parar 😅", "Pensar 🤔"],
-c: 0
+r: ["Continuar 😳", "Bora 😎", "Claro 👀"]
 }
 ];
 
@@ -173,25 +168,18 @@ document.getElementById("pergunta").innerText = p.p;
 
 let html="";
 p.r.forEach((r,i)=>{
-html+=`<button onclick="responder(${i})">${r}</button>`;
+html+=`<button onclick="responder()">${r}</button>`;
 });
 document.getElementById("respostas").innerHTML = html;
 }
 
-function responder(escolha){
-let p = perguntas[fase];
-
-if(escolha === p.c){
+function responder(){
 fase++;
 if(fase >= perguntas.length){
 document.getElementById("game").style.display="none";
 document.getElementById("final").style.display="block";
 }else{
 mostrar();
-}
-}else{
-alert("Ops 😅 tenta de novo!");
-location.reload();
 }
 }
 
