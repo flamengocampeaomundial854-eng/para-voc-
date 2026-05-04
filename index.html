@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Jogo 3D Especial 💖</title>
+<title>Jogo Especial 💖</title>
 
 <style>
 body {
@@ -115,16 +115,15 @@ button:hover {
     <div id="card">
 
         <div id="game">
-            <div class="personagem">💖</div>
+            <div class="personagem">😊</div>
             <h2 id="pergunta">Clique para começar...</h2>
             <div id="respostas"></div>
             <button onclick="iniciar()">Começar</button>
         </div>
 
         <div id="final">
-            <h1 class="brilho">💖 EU AMO APARECIDA 💖</h1>
-            <h2>✨ Criado por Rhuan ✨</h2>
-            <p>Esse jogo foi só um jeitinho diferente de dizer isso 💕</p>
+            <h1 class="brilho">💖 era só pra dizer que eu te amo 💖</h1>
+            <h2>✨ feito por Rhuan ✨</h2>
             <button onclick="reiniciar()">Jogar novamente</button>
         </div>
 
@@ -136,28 +135,28 @@ let fase = 0;
 
 const perguntas = [
 {
-p: "Qual dessas coisas faz o dia ficar melhor?",
-r: ["Dinheiro 💸", "Alguém especial 💖", "Dormir 😴"],
+p: "O que você prefere fazer no tempo livre?",
+r: ["Assistir algo 📺", "Conversar 💬", "Dormir 😴"],
 c: 1
 },
 {
-p: "O que é mais importante?",
-r: ["Status", "Sentimento verdadeiro 💕", "Fama"],
+p: "Qual dessas coisas deixa o dia melhor?",
+r: ["Comida boa 🍔", "Mensagem de alguém especial 💖", "Nada 😅"],
 c: 1
 },
 {
-p: "Se alguém pensa em você todo dia, isso significa?",
-r: ["Nada", "Só amizade", "Algo especial 💖"],
-c: 2
+p: "Quando o celular vibra, você pensa:",
+r: ["Tanto faz", "Espero que seja alguém importante 👀", "Nem vejo"],
+c: 1
 },
 {
-p: "Qual palavra combina mais com carinho?",
-r: ["Indiferença", "Frieza", "Amor 💕"],
-c: 2
+p: "Qual dessas combina mais com um dia feliz?",
+r: ["Silêncio", "Boa companhia 😊", "Tédio"],
+c: 1
 },
 {
-p: "Última pergunta... preparado(a)?",
-r: ["Sim 😳", "Não 😅", "Talvez 👀"],
+p: "Última perguntinha...",
+r: ["Continuar 😳", "Parar 😅", "Pensar 🤔"],
 c: 0
 }
 ];
@@ -191,7 +190,7 @@ document.getElementById("final").style.display="block";
 mostrar();
 }
 }else{
-alert("Hmm... tenta de novo 😅");
+alert("Ops 😅 tenta de novo!");
 location.reload();
 }
 }
