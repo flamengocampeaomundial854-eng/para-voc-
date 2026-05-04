@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Jogo 3D Especial 💖</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial;
+    background: radial-gradient(circle at center, #111, #000);
+    color: white;
+}
+
+/* CENA 3D */
+#scene {
+    perspective: 1000px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CARD */
+#card {
+    width: 360px;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+#card:hover {
+    transform: rotateY(10deg) rotateX(5deg);
+}
+
+/* PERSONAGEM */
+.personagem {
+    font-size: 60px;
+    transform: translateZ(40px);
+    animation: flutuar 2s infinite alternate;
+}
+
+@keyframes flutuar {
+    from { transform: translateZ(40px) translateY(0); }
+    to { transform: translateZ(40px) translateY(-10px); }
+}
+
+/* TEXTO */
+#pergunta {
+    margin: 20px 0;
+    transform: translateZ(30px);
+}
+
+/* BOTÕES */
+button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #ff3399;
+    color: white;
+    cursor: pointer;
+    transform: translateZ(20px);
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateZ(30px) scale(1.05);
+    background: #ff0066;
+}
+
+/* FINAL */
+#final {
+    display: none;
+    text-align: center;
+}
+
+.brilho {
+    animation: brilho 1s infinite alternate;
+}
+
+@keyframes brilho {
+    from { text-shadow: 0 0 10px pink; }
+    to { text-shadow: 0 0 40px hotpink; }
+}
+
+/* FUNDO */
+#bg {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, #222, #000);
+    animation: mover 20s linear infinite;
+}
+
+@keyframes mover {
+    from { transform: translate(0,0); }
+    to { transform: translate(-200px,-200px); }
+}
+</style>
+
+</head>
+<body>
+
+<div id="bg"></div>
+
+<div id="scene">
+    <div id="card">
+
+        <div id="game">
+            <div class="personagem">💖</div>
+            <h2 id="pergunta">Clique para começar...</h2>
+            <div id="respostas"></div>
+            <button onclick="iniciar()">Começar</button>
+        </div>
+
+        <div id="final">
+            <h1 class="brilho">💖 EU AMO APARECIDA 💖</h1>
+            <h2>✨ Criado por Rhuan ✨</h2>
+            <p>Esse jogo foi só um jeitinho diferente de dizer isso 💕</p>
+            <button onclick="reiniciar()">Jogar novamente</button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+let fase = 0;
+
+const perguntas = [
+{
+p: "Qual dessas coisas faz o dia ficar melhor?",
+r: ["Dinheiro 💸", "Alguém especial 💖", "Dormir 😴"],
+c: 1
+},
+{
+p: "O que é mais importante?",
+r: ["Status", "Sentimento verdadeiro 💕", "Fama"],
+c: 1
+},
+{
+p: "Se alguém pensa em você todo dia, isso significa?",
+r: ["Nada", "Só amizade", "Algo especial 💖"],
+c: 2
+},
+{
+p: "Qual palavra combina mais com carinho?",
+r: ["Indiferença", "Frieza", "Amor 💕"],
+c: 2
+},
+{
+p: "Última pergunta... preparado(a)?",
+r: ["Sim 😳", "Não 😅", "Talvez 👀"],
+c: 0
+}
+];
+
+function iniciar(){
+fase = 0;
+document.querySelector("button").style.display="none";
+mostrar();
+}
+
+function mostrar(){
+let p = perguntas[fase];
+document.getElementById("pergunta").innerText = p.p;
+
+let html="";
+p.r.forEach((r,i)=>{
+html+=`<button onclick="responder(${i})">${r}</button>`;
+});
+document.getElementById("respostas").innerHTML = html;
+}
+
+function responder(escolha){
+let p = perguntas[fase];
+
+if(escolha === p.c){
+fase++;
+if(fase >= perguntas.length){
+document.getElementById("game").style.display="none";
+document.getElementById("final").style.display="block";
+}else{
+mostrar();
+}
+}else{
+alert("Hmm... tenta de novo 😅");
+location.reload();
+}
+}
+
+function reiniciar(){
+location.reload();
+}
+</script>
+
+</body>
+</html>
