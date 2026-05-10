@@ -1,192 +1,48 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Jogo Especial 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedido 💖</title>
 
 <style>
-body {
-    margin: 0;
-    overflow: hidden;
-    font-family: Arial;
-    background: radial-gradient(circle at center, #111, #000);
-    color: white;
-}
+    body{
+        margin:0;
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:linear-gradient(135deg,#ff4d6d,#ff8fa3);
+        font-family:Arial, sans-serif;
+        overflow:hidden;
+    }
 
-/* CENA 3D */
-#scene {
-    perspective: 1000px;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    h1{
+        color:white;
+        font-size:45px;
+        text-align:center;
+        padding:20px;
+        animation:flutuar 2s infinite ease-in-out;
+        text-shadow:0 0 15px rgba(0,0,0,0.3);
+    }
 
-/* CARD */
-#card {
-    width: 360px;
-    padding: 30px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(10px);
-    transform-style: preserve-3d;
-    transition: transform 0.5s;
-}
-
-#card:hover {
-    transform: rotateY(10deg) rotateX(5deg);
-}
-
-/* PERSONAGEM */
-.personagem {
-    font-size: 60px;
-    transform: translateZ(40px);
-    animation: flutuar 2s infinite alternate;
-}
-
-@keyframes flutuar {
-    from { transform: translateZ(40px) translateY(0); }
-    to { transform: translateZ(40px) translateY(-10px); }
-}
-
-/* TEXTO */
-#pergunta {
-    margin: 20px 0;
-    transform: translateZ(30px);
-}
-
-/* BOTÕES */
-button {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-    padding: 12px;
-    border: none;
-    border-radius: 10px;
-    background: #ff3399;
-    color: white;
-    cursor: pointer;
-    transform: translateZ(20px);
-    transition: 0.3s;
-}
-
-button:hover {
-    transform: translateZ(30px) scale(1.05);
-    background: #ff0066;
-}
-
-/* FINAL */
-#final {
-    display: none;
-    text-align: center;
-}
-
-.brilho {
-    animation: brilho 1s infinite alternate;
-}
-
-@keyframes brilho {
-    from { text-shadow: 0 0 10px pink; }
-    to { text-shadow: 0 0 40px hotpink; }
-}
-
-/* FUNDO */
-#bg {
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, #222, #000);
-    animation: mover 20s linear infinite;
-}
-
-@keyframes mover {
-    from { transform: translate(0,0); }
-    to { transform: translate(-200px,-200px); }
-}
+    @keyframes flutuar{
+        0%{
+            transform:translateY(0px);
+        }
+        50%{
+            transform:translateY(-10px);
+        }
+        100%{
+            transform:translateY(0px);
+        }
+    }
 </style>
-
 </head>
+
 <body>
 
-<div id="bg"></div>
-
-<div id="scene">
-    <div id="card">
-
-        <div id="game">
-            <div class="personagem">😊</div>
-            <h2 id="pergunta">Clique para começar...</h2>
-            <div id="respostas"></div>
-            <button onclick="iniciar()">Começar</button>
-        </div>
-
-        <div id="final">
-            <h1 class="brilho">💖 era só pra dizer que eu te amo 💖</h1>
-            <h2>✨ feito por Rhuan ✨</h2>
-            <button onclick="reiniciar()">Jogar novamente</button>
-        </div>
-
-    </div>
-</div>
-
-<script>
-let fase = 0;
-
-const perguntas = [
-{
-p: "O que você prefere fazer no tempo livre?",
-r: ["Assistir algo 📺", "Conversar 💬", "Dormir 😴"]
-},
-{
-p: "Qual dessas coisas deixa o dia melhor?",
-r: ["Comida boa 🍔", "Mensagem de alguém especial 💖", "Descansar 😌"]
-},
-{
-p: "Quando o celular vibra, você pensa:",
-r: ["Quem será? 🤔", "Tomara que seja alguém legal 👀", "Vou ver depois 😅"]
-},
-{
-p: "Qual dessas combina mais com um dia feliz?",
-r: ["Boa companhia 😊", "Momentos tranquilos 😌", "Risadas 😂"]
-},
-{
-p: "Última perguntinha...",
-r: ["Continuar 😳", "Bora 😎", "Claro 👀"]
-}
-];
-
-function iniciar(){
-fase = 0;
-document.querySelector("button").style.display="none";
-mostrar();
-}
-
-function mostrar(){
-let p = perguntas[fase];
-document.getElementById("pergunta").innerText = p.p;
-
-let html="";
-p.r.forEach((r,i)=>{
-html+=`<button onclick="responder()">${r}</button>`;
-});
-document.getElementById("respostas").innerHTML = html;
-}
-
-function responder(){
-fase++;
-if(fase >= perguntas.length){
-document.getElementById("game").style.display="none";
-document.getElementById("final").style.display="block";
-}else{
-mostrar();
-}
-}
-
-function reiniciar(){
-location.reload();
-}
-</script>
+<h1>Você aceita namorar comigo? 💖</h1>
 
 </body>
 </html>
